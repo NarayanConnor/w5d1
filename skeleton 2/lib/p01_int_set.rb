@@ -66,6 +66,8 @@ class IntSet
   end
 end
 
+require "byebug"
+
 class ResizingIntSet
   attr_reader :count
 
@@ -75,12 +77,31 @@ class ResizingIntSet
   end
 
   def insert(num)
+    # debugger
+    return if include?(num)
+    # debugger
+    @store.each do |bucket|
+      # debugger
+      if bucket.empty?
+        bucket << num 
+        @count += 1
+        # debugger
+        break
+      end
+    end
   end
 
   def remove(num)
+    @store.each do |bucket|
+      if bucket.include?(num) 
+        bucket.shift
+      end
+
+    end
   end
 
   def include?(num)
+    @store.include?([num])
   end
 
   private
