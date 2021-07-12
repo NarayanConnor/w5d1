@@ -1,3 +1,5 @@
+require "byebug"
+
 class HashSet
   attr_reader :count
 
@@ -7,20 +9,26 @@ class HashSet
   end
 
   def insert(key)
-    @store.each { |buk| (buk<< key.hash; @count+=1) if buk.empty?}
+    # debugger
+    self[key.hash] << key if !include?(key)
+    @count += 1
+    resize! if @count == @store.length
   end
 
+
   def include?(key)
-    @store.include?(key.hash)
+    self[key.hash].include?(key)
   end
 
   def remove(key)
+    
   end
 
   private
 
   def [](num)
-    # optional but useful; return the bucket corresponding to `num`
+    # debugger
+    @store[num % @store.length]
   end
 
   def num_buckets
@@ -28,5 +36,6 @@ class HashSet
   end
 
   def resize!
+    @store +=  Array.new(@store.length) { Array.new } 
   end
 end
