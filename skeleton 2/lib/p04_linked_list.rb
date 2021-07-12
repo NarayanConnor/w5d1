@@ -1,3 +1,5 @@
+
+
 class Node
   attr_reader :key
   attr_accessor :val, :next, :prev
@@ -18,14 +20,19 @@ class Node
     # and removes self from list.
   end
 end
-
+################################################
 class LinkedList
-  def initialize
+include Enumerable
+  def initialize()
+    @head=Node.new(:first,0)
+    @tail=Node.new('z',1)
+    @head.next=@tail
+    @tail.prev=@head
   end
 
   def [](i)
-    each_with_index { |link, j| return link if i == j }
-    nil
+    self.each_with_index { |link, j| return link if i == j }
+    #nil
   end
 
   def first
@@ -35,6 +42,7 @@ class LinkedList
   end
 
   def empty?
+
   end
 
   def get(key)

@@ -21,7 +21,11 @@ class HashSet
   end
 
   def remove(key)
-    
+    if self[key.hash].include?(key) 
+      ki=self[key.hash].index(key)
+      self[key.hash].delete_at(ki)
+      @count-=1
+    end
   end
 
   private

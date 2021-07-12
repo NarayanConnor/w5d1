@@ -2,11 +2,11 @@ class Integer
   # Integer#hash already implemented for you
 end
 
-class Array
-  def hash
-    self.map.with_index {|ele, i| (ele + i).hash}.sum
-  end
-end
+# class Array
+#   def hash
+#     self.map.with_index {|ele, i| (ele + i).hash}.sum
+#   end
+# end
 
 #self.each_with_index.inject {|acc, ele, i| (acc ^ ele) }
 
