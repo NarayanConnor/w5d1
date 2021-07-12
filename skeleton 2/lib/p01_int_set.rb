@@ -33,12 +33,26 @@ class IntSet
   end
 
   def insert(num)
+    @store.each do |bucket|
+      if bucket.empty?
+        bucket<<num 
+        return true 
+      end
+    end
+    false
   end
 
   def remove(num)
+    @store.each do |bucket|
+      if bucket.include?(num) 
+        bucket.shift
+      end
+
+    end
   end
 
   def include?(num)
+    @store.include?([num])
   end
 
   private
