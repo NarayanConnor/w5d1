@@ -80,6 +80,7 @@ class ResizingIntSet
     # debugger
     return if include?(num)
     # debugger
+    resize! if @count==@store.length
     @store.each do |bucket|
       # debugger
       if bucket.empty?
@@ -95,8 +96,8 @@ class ResizingIntSet
     @store.each do |bucket|
       if bucket.include?(num) 
         bucket.shift
+        @count-=1
       end
-
     end
   end
 
@@ -115,5 +116,6 @@ class ResizingIntSet
   end
 
   def resize!
+    @store+=Array.new(@store.length){Array.new}
   end
 end
