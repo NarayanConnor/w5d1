@@ -7,9 +7,11 @@ class HashSet
   end
 
   def insert(key)
+    @store.each { |buk| (buk<< key.hash; @count+=1) if buk.empty?}
   end
 
   def include?(key)
+    @store.include?(key.hash)
   end
 
   def remove(key)
