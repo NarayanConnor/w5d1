@@ -24,8 +24,8 @@ end
 class LinkedList
 include Enumerable
   def initialize()
-    @head=Node.new(:first,0)
-    @tail=Node.new('z',1)
+    @head = Node.new
+    @tail = Node.new
     @head.next=@tail
     @tail.prev=@head
   end
@@ -36,13 +36,15 @@ include Enumerable
   end
 
   def first
+    @head
   end
 
   def last
+    @tail
   end
 
   def empty?
-
+    first.next == last && last.prev == first
   end
 
   def get(key)
